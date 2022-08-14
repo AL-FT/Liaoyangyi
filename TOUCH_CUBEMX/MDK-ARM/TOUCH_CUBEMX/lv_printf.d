@@ -1,0 +1,9 @@
+touch_cubemx\lv_printf.o: ..\LVGL\src\misc\lv_printf.c
+touch_cubemx\lv_printf.o: ..\LVGL\src\misc\lv_printf.h
+touch_cubemx\lv_printf.o: ..\LVGL\src\misc\../lv_conf_internal.h
+touch_cubemx\lv_printf.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+touch_cubemx\lv_printf.o: ..\LVGL\src\misc\../lv_conf_kconfig.h
+touch_cubemx\lv_printf.o: ../LVGL/src/core/../../lv_conf.h
+touch_cubemx\lv_printf.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdarg.h
+touch_cubemx\lv_printf.o: D:\MDK\ARM\ARMCC\Bin\..\include\stddef.h
+touch_cubemx\lv_printf.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdbool.h

@@ -1,0 +1,13 @@
+touch_cubemx\lv_font.o: ..\LVGL\src\font\lv_font.c
+touch_cubemx\lv_font.o: ..\LVGL\src\font\lv_font.h
+touch_cubemx\lv_font.o: ..\LVGL\src\font\../lv_conf_internal.h
+touch_cubemx\lv_font.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+touch_cubemx\lv_font.o: ..\LVGL\src\font\../lv_conf_kconfig.h
+touch_cubemx\lv_font.o: ../LVGL/src/core/../../lv_conf.h
+touch_cubemx\lv_font.o: D:\MDK\ARM\ARMCC\Bin\..\include\stddef.h
+touch_cubemx\lv_font.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdbool.h
+touch_cubemx\lv_font.o: ..\LVGL\src\font\lv_symbol_def.h
+touch_cubemx\lv_font.o: ..\LVGL\src\font\../misc/lv_area.h
+touch_cubemx\lv_font.o: D:\MDK\ARM\ARMCC\Bin\..\include\string.h
+touch_cubemx\lv_font.o: ..\LVGL\src\font\../misc/lv_utils.h
+touch_cubemx\lv_font.o: ..\LVGL\src\font\../misc/lv_log.h
