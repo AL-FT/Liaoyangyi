@@ -335,10 +335,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--locale=english</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../HARDWARE/LCD;../HARDWARE/24CXX;../HARDWARE/IIC;../HARDWARE/KEY;../HARDWARE/LED;../HARDWARE/TOUCH;../HARDWARE/delay;../LVGL/src;../LVGL/porting;../LVGL/demos;../LVGL/src/core;../LVGL/src/draw;../LVGL/src/extra;../LVGL/src/extra/layouts;../LVGL/src/extra/layouts/flex;../LVGL/src/extra/layouts/grid;../LVGL/src/extra/themes;../LVGL/src/extra/themes/basic;../LVGL/src/extra/themes/default;../LVGL/src/extra/themes/mono;../LVGL/src/extra/widgets;../LVGL/src/extra/widgets/animimg;../LVGL/src/extra/widgets/calendar;../LVGL/src/extra/widgets/chart;../LVGL/src/extra/widgets/colorwheel;../LVGL/src/extra/widgets/imgbtn;../LVGL/src/extra/widgets/keyboard;../LVGL/src/extra/widgets/led;../LVGL/src/extra/widgets/list;../LVGL/src/extra/widgets/meter;../LVGL/src/extra/widgets/msgbox;../LVGL/src/extra/widgets/span;../LVGL/src/extra/widgets/spinbox;../LVGL/src/extra/widgets/spinner;../LVGL/src/extra/widgets/tabview;../LVGL/src/extra/widgets/tileview;../LVGL/src/extra/widgets/win;../LVGL/src/font;../LVGL/src/gpu;../LVGL/src/hal;../LVGL/src/misc;../LVGL/src/widgets;../LVGL</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../HARDWARE/LCD;../HARDWARE/24CXX;../HARDWARE/IIC;../HARDWARE/KEY;../HARDWARE/LED;../HARDWARE/TOUCH;../HARDWARE/delay;../LVGL/src;../LVGL/porting;../LVGL/demos;../LVGL/src/core;../LVGL/src/draw;../LVGL/src/extra;../LVGL/src/extra/layouts;../LVGL/src/extra/layouts/flex;../LVGL/src/extra/layouts/grid;../LVGL/src/extra/themes;../LVGL/src/extra/themes/basic;../LVGL/src/extra/themes/default;../LVGL/src/extra/themes/mono;../LVGL/src/extra/widgets;../LVGL/src/extra/widgets/animimg;../LVGL/src/extra/widgets/calendar;../LVGL/src/extra/widgets/chart;../LVGL/src/extra/widgets/colorwheel;../LVGL/src/extra/widgets/imgbtn;../LVGL/src/extra/widgets/keyboard;../LVGL/src/extra/widgets/led;../LVGL/src/extra/widgets/list;../LVGL/src/extra/widgets/meter;../LVGL/src/extra/widgets/msgbox;../LVGL/src/extra/widgets/span;../LVGL/src/extra/widgets/spinbox;../LVGL/src/extra/widgets/spinner;../LVGL/src/extra/widgets/tabview;../LVGL/src/extra/widgets/tileview;../LVGL/src/extra/widgets/win;../LVGL/src/font;../LVGL/src/gpu;../LVGL/src/hal;../LVGL/src/misc;../LVGL/src/widgets;../LVGL;../LVGL/UI_v1;../HARDWARE/BEEP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -401,6 +401,62 @@
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/dma.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
               <FileName>fsmc.c</FileName>
@@ -607,6 +663,16 @@
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\BEEP\beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>ws2812.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\WS2812\ws2812.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1272,6 +1338,31 @@
               <FileName>lv_example_event_1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\LVGL\demos\lv_example_event_1.c</FilePath>
+            </File>
+            <File>
+              <FileName>test_demo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\LVGL\demos\test_demo.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>UI</GroupName>
+          <Files>
+            <File>
+              <FileName>ui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\LVGL\UI_v1\ui.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_Font1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\LVGL\UI_v1\ui_font_Font1.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\LVGL\UI_v1\ui_helpers.c</FilePath>
             </File>
           </Files>
         </Group>

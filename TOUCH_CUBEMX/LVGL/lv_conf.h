@@ -15,8 +15,8 @@
 
 #include <stdint.h>
 
-#define MY_DISP_HOR_RES     320
-#define MY_DISP_VER_RES     240
+#define MY_DISP_HOR_RES     240
+#define MY_DISP_VER_RES     320
 /*====================
    COLOR SETTINGS
  *====================*/
@@ -62,7 +62,7 @@
  *====================*/
 
 /*Default display refresh period. LVG will redraw changed ares with this period time*/
-#define LV_DISP_DEF_REFR_PERIOD     30      /*[ms]*/
+#define LV_DISP_DEF_REFR_PERIOD     30     /*[ms]*/
 
 /*Input device read period in milliseconds*/
 #define LV_INDEV_DEF_READ_PERIOD    30      /*[ms]*/
@@ -270,7 +270,7 @@ e.g. "stm32f769xx.h" or "stm32f429xx.h"*/
 #define LV_FONT_MONTSERRAT_16    0
 #define LV_FONT_MONTSERRAT_18    0
 #define LV_FONT_MONTSERRAT_20    0
-#define LV_FONT_MONTSERRAT_22    0
+#define LV_FONT_MONTSERRAT_22    1
 #define LV_FONT_MONTSERRAT_24    0
 #define LV_FONT_MONTSERRAT_26    0
 #define LV_FONT_MONTSERRAT_28    0

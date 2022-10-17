@@ -2,6 +2,7 @@
 "touch_cubemx\startup_stm32f103xe.o"
 "touch_cubemx\main.o"
 "touch_cubemx\gpio.o"
+"touch_cubemx\dma.o"
 "touch_cubemx\fsmc.o"
 "touch_cubemx\tim.o"
 "touch_cubemx\stm32f1xx_it.o"
@@ -30,6 +31,8 @@
 "touch_cubemx\led.o"
 "touch_cubemx\touch.o"
 "touch_cubemx\delay.o"
+"touch_cubemx\beep.o"
+"touch_cubemx\ws2812.o"
 "touch_cubemx\lv_disp.o"
 "touch_cubemx\lv_event.o"
 "touch_cubemx\lv_group.o"
@@ -158,6 +161,10 @@
 "touch_cubemx\lv_port_indev.o"
 "touch_cubemx\lv_demo_keypad_encoder.o"
 "touch_cubemx\lv_example_event_1.o"
+"touch_cubemx\test_demo.o"
+"touch_cubemx\ui.o"
+"touch_cubemx\ui_font_font1.o"
+"touch_cubemx\ui_helpers.o"
 --strict --scatter "TOUCH_CUBEMX\TOUCH_CUBEMX.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

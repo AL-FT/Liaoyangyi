@@ -203,8 +203,8 @@ static void touchpad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
     } 
     else 
     {
-        data->point.x = last_x;
-		data->point.y = last_y;
+        data->point.x = last_y;
+		data->point.y = last_x;
 		data->state = LV_INDEV_STATE_REL;
     }
 

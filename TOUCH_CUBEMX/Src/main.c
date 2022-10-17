@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
 #include "tim.h"
 #include "gpio.h"
 #include "fsmc.h"
@@ -37,6 +38,10 @@
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
 #include "lv_example_event.h"
+#include "test_demo.h"
+#include "ui.h"
+#include "ui_helpers.h"
+#include "beep.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -135,28 +140,34 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_FSMC_Init();
   MX_TIM6_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   
 	delay_init(72);			//us延时初始化
 	LCD_Init();				//屏幕初始化
 	tp_dev.init();			//触摸屏初始化
 	KEY_Init();				//按键初始化
-	HAL_TIM_Base_Start_IT(&htim6);
+	HAL_TIM_Base_Start_IT(&htim6);		//lvgl心跳定时器开启
 	lv_init();				//lvgl初始化
 	lv_port_disp_init();	//lvgl显示初始化
 	lv_port_indev_init();	//lvgl输入初始化
+	lcddev.dir = 0;
 	
-	lv_example_event_1();	//触摸例程
-	//LCD_ShowString(0,0,120,20,24,(uint8_t *)"hello");
+	BEEP_Init();	//输出测试IO初始化
+
+	ui_init();
+
 	//rtp_test();		//触摸测试
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
+  {		
+	  
 		tp_dev.scan(0);		//触摸扫描
 		lv_task_handler();	//lvgl事务处理	  
 	  

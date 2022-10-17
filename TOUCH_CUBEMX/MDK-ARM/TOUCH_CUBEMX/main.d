@@ -30,6 +30,7 @@ touch_cubemx\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 touch_cubemx\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 touch_cubemx\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 touch_cubemx\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+touch_cubemx\main.o: ../Inc/dma.h
 touch_cubemx\main.o: ../Inc/tim.h
 touch_cubemx\main.o: ../Inc/gpio.h
 touch_cubemx\main.o: ../Inc/fsmc.h
@@ -150,3 +151,7 @@ touch_cubemx\main.o: ../LVGL/lv_conf.h
 touch_cubemx\main.o: ../LVGL/porting/lv_port_disp.h
 touch_cubemx\main.o: ../LVGL/porting/lv_port_indev.h
 touch_cubemx\main.o: ../LVGL/demos/lv_example_event.h
+touch_cubemx\main.o: ../LVGL/demos/test_demo.h
+touch_cubemx\main.o: ../LVGL/UI_v1/ui.h
+touch_cubemx\main.o: ../LVGL/UI_v1/ui_helpers.h
+touch_cubemx\main.o: ../HARDWARE/BEEP/beep.h
