@@ -1,0 +1,9 @@
+touch_cubemx\lv_area.o: ..\LVGL\src\misc\lv_area.c
+touch_cubemx\lv_area.o: ..\LVGL\src\misc\../lv_conf_internal.h
+touch_cubemx\lv_area.o: F:\KEIL\ARM\ARMCC\Bin\..\include\stdint.h
+touch_cubemx\lv_area.o: ..\LVGL\src\misc\../lv_conf_kconfig.h
+touch_cubemx\lv_area.o: ../LVGL/src/core/../../lv_conf.h
+touch_cubemx\lv_area.o: ..\LVGL\src\misc\lv_area.h
+touch_cubemx\lv_area.o: F:\KEIL\ARM\ARMCC\Bin\..\include\string.h
+touch_cubemx\lv_area.o: F:\KEIL\ARM\ARMCC\Bin\..\include\stdbool.h
+touch_cubemx\lv_area.o: ..\LVGL\src\misc\lv_math.h
