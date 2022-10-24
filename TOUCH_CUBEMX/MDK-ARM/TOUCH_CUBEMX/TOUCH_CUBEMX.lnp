@@ -33,6 +33,7 @@
 "touch_cubemx\delay.o"
 "touch_cubemx\beep.o"
 "touch_cubemx\ws2812.o"
+"touch_cubemx\user_time.o"
 "touch_cubemx\lv_disp.o"
 "touch_cubemx\lv_event.o"
 "touch_cubemx\lv_group.o"

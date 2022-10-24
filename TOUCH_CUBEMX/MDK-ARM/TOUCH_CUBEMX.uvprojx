@@ -338,7 +338,7 @@
               <MiscControls>--locale=english</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../HARDWARE/LCD;../HARDWARE/24CXX;../HARDWARE/IIC;../HARDWARE/KEY;../HARDWARE/LED;../HARDWARE/TOUCH;../HARDWARE/delay;../LVGL/src;../LVGL/porting;../LVGL/demos;../LVGL/src/core;../LVGL/src/draw;../LVGL/src/extra;../LVGL/src/extra/layouts;../LVGL/src/extra/layouts/flex;../LVGL/src/extra/layouts/grid;../LVGL/src/extra/themes;../LVGL/src/extra/themes/basic;../LVGL/src/extra/themes/default;../LVGL/src/extra/themes/mono;../LVGL/src/extra/widgets;../LVGL/src/extra/widgets/animimg;../LVGL/src/extra/widgets/calendar;../LVGL/src/extra/widgets/chart;../LVGL/src/extra/widgets/colorwheel;../LVGL/src/extra/widgets/imgbtn;../LVGL/src/extra/widgets/keyboard;../LVGL/src/extra/widgets/led;../LVGL/src/extra/widgets/list;../LVGL/src/extra/widgets/meter;../LVGL/src/extra/widgets/msgbox;../LVGL/src/extra/widgets/span;../LVGL/src/extra/widgets/spinbox;../LVGL/src/extra/widgets/spinner;../LVGL/src/extra/widgets/tabview;../LVGL/src/extra/widgets/tileview;../LVGL/src/extra/widgets/win;../LVGL/src/font;../LVGL/src/gpu;../LVGL/src/hal;../LVGL/src/misc;../LVGL/src/widgets;../LVGL;../LVGL/UI_v1;../HARDWARE/BEEP</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../HARDWARE/LCD;../HARDWARE/24CXX;../HARDWARE/IIC;../HARDWARE/KEY;../HARDWARE/LED;../HARDWARE/TOUCH;../HARDWARE/delay;../LVGL/src;../LVGL/porting;../LVGL/demos;../LVGL/src/core;../LVGL/src/draw;../LVGL/src/extra;../LVGL/src/extra/layouts;../LVGL/src/extra/layouts/flex;../LVGL/src/extra/layouts/grid;../LVGL/src/extra/themes;../LVGL/src/extra/themes/basic;../LVGL/src/extra/themes/default;../LVGL/src/extra/themes/mono;../LVGL/src/extra/widgets;../LVGL/src/extra/widgets/animimg;../LVGL/src/extra/widgets/calendar;../LVGL/src/extra/widgets/chart;../LVGL/src/extra/widgets/colorwheel;../LVGL/src/extra/widgets/imgbtn;../LVGL/src/extra/widgets/keyboard;../LVGL/src/extra/widgets/led;../LVGL/src/extra/widgets/list;../LVGL/src/extra/widgets/meter;../LVGL/src/extra/widgets/msgbox;../LVGL/src/extra/widgets/span;../LVGL/src/extra/widgets/spinbox;../LVGL/src/extra/widgets/spinner;../LVGL/src/extra/widgets/tabview;../LVGL/src/extra/widgets/tileview;../LVGL/src/extra/widgets/win;../LVGL/src/font;../LVGL/src/gpu;../LVGL/src/hal;../LVGL/src/misc;../LVGL/src/widgets;../LVGL;../LVGL/UI_v1;../HARDWARE/BEEP;../HARDWARE/WS2812;../HARDWARE/USER_TIME</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -673,6 +673,11 @@
               <FileName>ws2812.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\WS2812\ws2812.c</FilePath>
+            </File>
+            <File>
+              <FileName>user_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\USER_TIME\user_time.c</FilePath>
             </File>
           </Files>
         </Group>

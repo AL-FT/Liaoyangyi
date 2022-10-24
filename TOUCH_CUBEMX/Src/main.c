@@ -42,6 +42,9 @@
 #include "ui.h"
 #include "ui_helpers.h"
 #include "beep.h"
+#include "ws2812.h"
+#include "user_time.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -72,7 +75,21 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int time_tick = 0;	//时基
+int Hotwind_S = 0;
+int Hotwind_M = 0;
+int Watermist_S = 0;
+int Watermist_M = 0;
+int Light_S = 0;
+int Light_M = 0;
+	
+int c_red = 0;
+int c_green = 0;
+int c_blue = 0;
+char flash_state = 0;	//频闪控制
 
+extern int Set_time1,Set_time2,Set_time3;
+extern char Hotwind_state,Watermist_state,Light_state;
 //清空屏幕并在右上角显示"RST"
 void Load_Drow_Dialog(void)
 {
@@ -144,13 +161,16 @@ int main(void)
   MX_FSMC_Init();
   MX_TIM6_Init();
   MX_TIM4_Init();
+  MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   
 	delay_init(72);			//us延时初始化
 	LCD_Init();				//屏幕初始化
-	tp_dev.init();			//触摸屏初始化
+	//tp_dev.init();			//触摸屏初始化
 	KEY_Init();				//按键初始化
 	HAL_TIM_Base_Start_IT(&htim6);		//lvgl心跳定时器开启
+	HAL_TIM_Base_Start_IT(&htim2);		//灯光频闪定时器开启
 	lv_init();				//lvgl初始化
 	lv_port_disp_init();	//lvgl显示初始化
 	lv_port_indev_init();	//lvgl输入初始化
@@ -159,7 +179,10 @@ int main(void)
 	BEEP_Init();	//输出测试IO初始化
 
 	ui_init();
-
+	
+	WS_WriteAll_RGB(255,255,255);		//上电亮白灯
+	HAL_Delay(500);
+	
 	//rtp_test();		//触摸测试
   /* USER CODE END 2 */
 
@@ -167,10 +190,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {		
-	  
 		tp_dev.scan(0);		//触摸扫描
-		lv_task_handler();	//lvgl事务处理	  
-	  
+		lv_task_handler();	//lvgl事务处理	
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -221,9 +242,49 @@ void SystemClock_Config(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if(htim->Instance == htim6.Instance)
+	if(htim->Instance == htim6.Instance)	//定时器4提供LVGL时钟
 	{
 		lv_tick_inc(1);		//lvgl心跳
+	}
+	
+	if(htim->Instance == htim2.Instance)	//定时器2提供LED频闪
+	{			
+		if(flash_state == 1)
+		{
+			LED_RUN();
+			flash_state = 0;
+		}
+		else 
+		{
+			WS_CloseAll();
+			flash_state = 1;
+		}
+
+		
+	}
+	if(htim->Instance == htim3.Instance)	//提供倒计时服务,100ms进入一次中断
+	{
+		time_tick ++;
+		if(time_tick >= 10)
+		{
+			time_tick = 0;
+			if(Hotwind_state == 1)	//当热风开启，开始倒计时
+			{
+				if(Hotwind_S == 0)
+				{
+					Hotwind_S = 60;
+					Hotwind_M -- ;
+				}
+				Hotwind_S --;		//未完待续...
+				
+			}
+			
+			if(Watermist_state == 1)
+			{
+				
+			}
+			
+		}
 	}
 }
 	

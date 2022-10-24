@@ -155,3 +155,5 @@ touch_cubemx\main.o: ../LVGL/demos/test_demo.h
 touch_cubemx\main.o: ../LVGL/UI_v1/ui.h
 touch_cubemx\main.o: ../LVGL/UI_v1/ui_helpers.h
 touch_cubemx\main.o: ../HARDWARE/BEEP/beep.h
+touch_cubemx\main.o: ../HARDWARE/WS2812/ws2812.h
+touch_cubemx\main.o: ../HARDWARE/USER_TIME/user_time.h

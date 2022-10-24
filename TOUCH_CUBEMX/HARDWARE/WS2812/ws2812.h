@@ -1,29 +1,29 @@
-#include "ws2812.h"
+#ifndef _WS281X_H
+#define _WS281X_H
 
-//传输一次WS2812的数据格式
-typedef struct{
-	uint16_t head[3];				//复位
-	uint16_t GRB[24*WS2812_NUM];
-	uint16_t tail;					//传输完成后为低电平
-}ws2812_frame_def;
+#include "main.h"
 
-ws2812_frame_def ws2812_frame = {
-	.head[0] = 0,
-	.head[1] = 0,
-	.head[2] = 0,
-	.tail = 0
-};
+#define PIXEL_NUM		10
+#define NUM				(24*PIXEL_NUM + 300)        // Reset 280us / 1.25us = 224
+#define WS1				61
+#define WS0				28
 
-void WS2812_Control(void)
-{
-	uint16_t i,j;
-	for(i=0;i<WS2812_NUM;i++){
-		for(j=0;j<8;j++){
-			ws2812_frame.GRB[i*24+j]	=(G&(0x80>>j))?BIT1:BIT0;
-			ws2812_frame.GRB[i*24+8+j]	=(R&(0x80>>j))?BIT1:BIT0;
-			ws2812_frame.GRB[i*24+16+j]	=(B&(0x80>>j))?BIT1:BIT0;
-		}
-	}
-		//函数要求为32位无符号指针，但实际传输时，因为之前定义的为half word，所以还是16bit传输
-	HAL_TIM_PWM_Start_DMA(&htim4, TIM_CHANNEL_1, (uint32_t *)&ws2812_frame,FRAME_BYTES);
-}
+extern uint16_t send_Buf[NUM];
+
+void WS_Load(void);
+void WS_WriteAll_RGB(uint8_t n_R, uint8_t n_G, uint8_t n_B);
+void WS_CloseAll(void);
+
+uint32_t WS281x_Color(uint8_t red, uint8_t green, uint8_t blue);
+void WS281x_SetPixelColor(uint16_t n, uint32_t GRBColor);
+void WS281x_SetPixelRGB(uint16_t n ,uint8_t red, uint8_t green, uint8_t blue);
+
+uint32_t Wheel(uint8_t WheelPos);
+void rainbow(uint8_t wait);
+void rainbowCycle(uint8_t wait);
+void LED_RUN(void);
+
+
+#endif
+
+

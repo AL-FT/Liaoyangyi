@@ -5,6 +5,13 @@
 
 #include "ui.h"
 #include "ui_helpers.h"
+#include "ws2812.h"
+#include "user_time.h"
+extern int c_red;	
+extern int c_green;
+extern int c_blue;
+int Set_time1 = 0,Set_time2 = 0,Set_time3 = 0;
+char Hotwind_state = 0,Watermist_state = 0,Light_state = 0;
 
 ///////////////////// VARIABLES ////////////////////
 lv_obj_t * ui_HOME;
@@ -222,7 +229,7 @@ static void ui_event_Button6(lv_event_t * e)
     }
 }
 
-static void ui_event_Switch1(lv_event_t * e)
+static void ui_event_Switch1(lv_event_t * e)	//热风开关
 {
 	lv_event_code_t event = lv_event_get_code(e);
 	lv_obj_t * ta = lv_event_get_target(e);
@@ -230,15 +237,111 @@ static void ui_event_Switch1(lv_event_t * e)
 	{
 		if(lv_obj_has_state(ui_Switch1,LV_STATE_CHECKED)== true)	//当开关被打开
 		{
-			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_SET);
+			if(Set_time1 > 0)
+			{
+				Hotwind_state = 1;	
+				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_SET);
+			}
 		}
 		else	//当开关被关闭
 		{
+			Hotwind_state = 0;	
 			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,GPIO_PIN_RESET);
+			Set_time1 = 0;	
 		}
 	}
 }
 
+static void ui_event_Switch2(lv_event_t * e)	//雾化开关
+{
+	lv_event_code_t event = lv_event_get_code(e);
+	lv_obj_t * ta = lv_event_get_target(e);
+	if(event == LV_EVENT_VALUE_CHANGED)
+	{
+		if(lv_obj_has_state(ui_Switch2,LV_STATE_CHECKED)== true)	//当开关被打开
+		{
+			if(Set_time2 > 0)
+			{
+				Watermist_state = 1;
+				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,GPIO_PIN_SET);
+			}
+		}
+		else	//当开关被关闭
+		{
+			Watermist_state = 0;
+			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,GPIO_PIN_RESET);
+			Set_time2 = 0;
+		}
+	}
+}
+
+static void ui_event_Switch3(lv_event_t * e)	//光照开关
+{
+	lv_event_code_t event = lv_event_get_code(e);
+	lv_obj_t * ta = lv_event_get_target(e);
+	if(event == LV_EVENT_VALUE_CHANGED)
+	{
+		if(lv_obj_has_state(ui_Switch3,LV_STATE_CHECKED)== true)	//当开关被打开
+		{
+			//if(Set_time3 > 0)
+				Light_state	= 1;
+		}
+		else	//当开关被关闭
+		{
+			Light_state	= 0;
+			//Set_time3  = 0;
+		}
+	}
+}
+
+
+// colorwheel事件回调函数
+static void colorwheel_event_callback(lv_event_t * event)
+{
+    if (event == NULL)
+    {
+        return ;
+    }
+ 
+    lv_event_code_t code = lv_event_get_code(event);
+    if (code == LV_EVENT_VALUE_CHANGED)
+    {
+        lv_obj_t *obj_colorwheel = lv_event_get_current_target(event);
+        lv_obj_t *obj_label = lv_event_get_user_data(event);
+        if (obj_label != NULL && obj_colorwheel != NULL)
+        {
+            lv_color_t color = lv_colorwheel_get_rgb(obj_colorwheel);
+			
+			c_red = color.ch.red;	c_green = color.ch.green; c_blue = color.ch.blue;	//颜色参数递出
+            lv_label_set_text_fmt(obj_label, "Red:%d\n\nGreen:%d\n\nBlue:%d", color.ch.red, color.ch.green, color.ch.blue); 
+			//WS_WriteAll_RGB(color.ch.red*8,color.ch.green*4,color.ch.blue*8);
+        }
+    }
+}
+
+//roller回调参数
+static void roller_event_handler(lv_event_t * e)
+{
+	lv_obj_t *objx = lv_event_get_current_target(e);
+	lv_event_code_t event = lv_event_get_code(e);
+	if(event == LV_EVENT_VALUE_CHANGED)
+	{
+		if (objx == ui_Roller1) //roller1(热风定时)
+		{
+			Set_time1 = (lv_roller_get_selected(ui_Roller1))*10;	//获取ID 1-0,7-60;	
+			//lv_label_set_text_fmt(ui_Label15,"%d",Set_time1);打印测试
+			
+		}
+		else if(objx == ui_Roller2)//roller2(雾化定时)
+		{
+			Set_time2 = (lv_roller_get_selected(ui_Roller2))*10;			
+		}
+		else if(objx == ui_Roller3)//roller3(光照定时)
+		{
+			Set_time3 = (lv_roller_get_selected(ui_Roller3))*10;	
+		}
+	}
+}
 ///////////////////// SCREENS ////////////////////
 void ui_HOME_screen_init(void)
 {
@@ -589,6 +692,7 @@ void ui_PAGE1_screen_init(void)
     lv_obj_set_style_text_font(ui_Roller1, &lv_font_montserrat_22, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_color(ui_Roller1, lv_color_hex(0x394852), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_Roller1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+	lv_obj_add_event_cb(ui_Roller1,roller_event_handler,LV_EVENT_VALUE_CHANGED,NULL);
 
     // ui_Label13
 
@@ -717,6 +821,7 @@ void ui_PAGE1_screen_init(void)
     lv_obj_set_align(ui_Label15, LV_ALIGN_CENTER);
 
     lv_label_set_text(ui_Label15, "00:00:00");
+	
 
     lv_obj_set_style_text_font(ui_Label15, &lv_font_montserrat_22, LV_PART_MAIN | LV_STATE_DEFAULT);
 
@@ -974,7 +1079,7 @@ void ui_PAGE2_screen_init(void)
 
     lv_label_set_text(ui_Label23, "00:00:00");
 
-    lv_obj_set_style_text_font(ui_Label23, LV_FONT_MONTSERRAT_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Label23, &lv_font_montserrat_22, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // ui_Label25
 
@@ -1003,7 +1108,7 @@ void ui_PAGE2_screen_init(void)
     lv_obj_set_y(ui_Switch2, 130);
 
     lv_obj_set_align(ui_Switch2, LV_ALIGN_CENTER);
-
+	lv_obj_add_event_cb(ui_Switch2,ui_event_Switch2,LV_EVENT_VALUE_CHANGED,NULL);
 }
 void ui_PAGE3_screen_init(void)
 {
@@ -1181,7 +1286,7 @@ void ui_PAGE3_screen_init(void)
 
     lv_label_set_text(ui_Label27, "00:00:00");
 
-    lv_obj_set_style_text_font(ui_Label27, LV_FONT_MONTSERRAT_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Label27, &lv_font_montserrat_22, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // ui_Label28
 
@@ -1210,7 +1315,8 @@ void ui_PAGE3_screen_init(void)
     lv_obj_set_y(ui_Switch3, 130);
 
     lv_obj_set_align(ui_Switch3, LV_ALIGN_CENTER);
-
+	lv_obj_add_event_cb(ui_Switch3,ui_event_Switch3,LV_EVENT_VALUE_CHANGED,NULL);
+	
     // ui_Panel8
 
     ui_Panel8 = lv_obj_create(ui_PAGE3);
@@ -1277,7 +1383,14 @@ void ui_COLORPAGE__screen_init(void)
     lv_obj_set_style_bg_opa(ui_COLORPAGE_, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     // ui_Colorwheel1
-
+	lv_obj_t *obj_color_label = lv_label_create(ui_COLORPAGE_);	//创建显示文本
+    if (obj_color_label == NULL)
+    {
+        return ;
+    }
+	lv_obj_align(obj_color_label, LV_ALIGN_CENTER, 0, -60);
+	
+	
     ui_Colorwheel1 = lv_colorwheel_create(ui_COLORPAGE_, true);
 
     lv_obj_set_width(ui_Colorwheel1, 180);
@@ -1289,6 +1402,9 @@ void ui_COLORPAGE__screen_init(void)
     lv_obj_set_align(ui_Colorwheel1, LV_ALIGN_CENTER);
 
     lv_obj_set_style_arc_width(ui_Colorwheel1, 15, LV_PART_MAIN | LV_STATE_DEFAULT);
+	lv_obj_add_event_cb(ui_Colorwheel1, colorwheel_event_callback, LV_EVENT_VALUE_CHANGED, (void *)obj_color_label);
+	lv_color_t color = lv_colorwheel_get_rgb(ui_Colorwheel1);
+    lv_label_set_text_fmt(obj_color_label, "Red:%d\n\nGreen:%d\n\nBlue:%d", color.ch.red, color.ch.green, color.ch.blue);
 
 
     // ui_Button5

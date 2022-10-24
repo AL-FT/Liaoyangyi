@@ -1,6 +1,5 @@
 touch_cubemx\ws2812.o: ..\HARDWARE\WS2812\ws2812.c
 touch_cubemx\ws2812.o: ..\HARDWARE\WS2812\ws2812.h
-touch_cubemx\ws2812.o: ..\HARDWARE\WS2812\ws2812.h
 touch_cubemx\ws2812.o: ../Inc/main.h
 touch_cubemx\ws2812.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 touch_cubemx\ws2812.o: ../Inc/stm32f1xx_hal_conf.h
@@ -32,4 +31,5 @@ touch_cubemx\ws2812.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 touch_cubemx\ws2812.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 touch_cubemx\ws2812.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 touch_cubemx\ws2812.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+touch_cubemx\ws2812.o: D:\MDK\ARM\ARMCC\Bin\..\include\string.h
 touch_cubemx\ws2812.o: ../Inc/tim.h

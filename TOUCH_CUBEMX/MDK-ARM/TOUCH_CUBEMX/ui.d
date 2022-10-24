@@ -137,3 +137,5 @@ touch_cubemx\ui.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 touch_cubemx\ui.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 touch_cubemx\ui.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 touch_cubemx\ui.o: ..\LVGL\UI_v1\ui_helpers.h
+touch_cubemx\ui.o: ../HARDWARE/WS2812/ws2812.h
+touch_cubemx\ui.o: ../HARDWARE/USER_TIME/user_time.h
